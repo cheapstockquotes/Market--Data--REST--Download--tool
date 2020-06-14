@@ -1,23 +1,27 @@
 
 package objects;
 
+import java.util.Date;
+
 public class Quote {
 	private Symbol symbol;
-	private long date;
+	private long dateTime;
 	private double high;
 	private double low;
 	private double open;
 	private double close;
+	private double prevClose;
 	private long volume;
 
-	public Quote(Symbol symbol, long date, double high, double low, double open, double close, long volume) {
+	public Quote(Symbol symbol, long date, double high, double low, double open, double close, double prevClose, long volume) {
 		this.symbol = symbol;
-		this.date = date;
+		this.dateTime = date;
 		this.high = high;
 		this.low = low;
 		this.open = open;
 		this.close = close;
 		this.volume = volume;
+		this.prevClose = prevClose;
 	}
 
 	public String getSymbol() {
@@ -25,7 +29,7 @@ public class Quote {
 	}
 
 	public long getDate() {
-		return date;
+		return dateTime;
 	}
 
 	public double getOpen() {
@@ -50,7 +54,8 @@ public class Quote {
 
 	@Override
 	public String toString() {
-		return symbol + " " + date + " " + high + " " + low + " " + open + " " + close + " " + volume;
+		return symbol.getSymbol() + " " + new Date(dateTime) + " " + high + " " + low + " " + open + " " + close + " " + " " + prevClose + " " + volume
+				+ System.lineSeparator();
 	}
 
 }

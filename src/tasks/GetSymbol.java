@@ -31,9 +31,10 @@ public class GetSymbol implements Runnable {
 			/* 2) Make a REST call to obtain the latest symbol quote data */
 			/*
 			 * NOTE: replace demo with your private key. The demo key will always return the
-			 * aapl symbol regardless of the request symbol
+			 * aapl symbol regardless of the request symbol. A subscribed key will return
+			 * the actual symbol data.
 			 */
-			ResponseObject response = connection.GETResponse("http://www.cheapstockquotes.com/rest/quote/" + symbol + "?key=demo");
+			ResponseObject response = connection.GETResponse("http://www.cheapstockquotes.com/rest/quote/" + symbol.getSymbol() + "?key=demo");
 			CacheConnections.put(connection);
 
 			String data = response.getPageData();
@@ -53,10 +54,11 @@ public class GetSymbol implements Runnable {
 			double low = jsonObject.get("low").getAsDouble();
 			double open = jsonObject.get("open").getAsDouble();
 			double close = jsonObject.get("close").getAsDouble();
+			double prevClose = jsonObject.get("previousclose").getAsDouble();
 			long volume = jsonObject.get("volume").getAsLong();
 
 			/* 4) Store the HLOCV in a Quote object for return */
-			Quote quote = new Quote(new Symbol(symbol), date, high, low, open, close, volume);
+			Quote quote = new Quote(new Symbol(symbol), date, high, low, open, close, prevClose, volume);
 
 			/* 5) Could store symbol quote data here in a database or file */
 			System.out.println(quote);

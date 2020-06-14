@@ -33,9 +33,10 @@ public class GetSymbolHistory implements Runnable {
 			/* 2) Make a REST call to obtain the latest symbol quote data */
 			/*
 			 * NOTE: replace demo with your private key. The demo key will always return the
-			 * aapl symbol regardless of the request symbol
+			 * aapl symbol regardless of the request symbol. A subscribed key will return
+			 * the actual symbol data.
 			 */
-			ResponseObject response = connection.GETResponse("http://www.cheapstockquotes.com/rest/history/" + symbol + "?key=demo");
+			ResponseObject response = connection.GETResponse("http://www.cheapstockquotes.com/rest/history/" + symbol.getSymbol() + "?key=demo");
 			CacheConnections.put(connection);
 
 			String data = response.getPageData();
@@ -59,13 +60,14 @@ public class GetSymbolHistory implements Runnable {
 				double low = jsonObject.get("low").getAsDouble();
 				double open = jsonObject.get("open").getAsDouble();
 				double close = jsonObject.get("close").getAsDouble();
+				// double prevClose = jsonObject.get("previousclose").getAsDouble();
 				long volume = jsonObject.get("volume").getAsLong();
-				symbolHistoricalQuotes.add(new Quote(new Symbol(symbol), date, high, low, open, close, volume));
+				symbolHistoricalQuotes.add(new Quote(new Symbol(symbol), date, high, low, open, close, 0, volume));
 			}
 
 			/* 5) could store or update history database here or write to a file */
 			if (symbolHistoricalQuotes.size() > 0)
-				symbolHistoricalQuotes.forEach(quote -> System.out.println(quote.toString()));
+				symbolHistoricalQuotes.forEach(quote -> System.out.println(quote));
 
 		} catch (Exception e) {
 			e.printStackTrace();
