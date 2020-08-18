@@ -52,10 +52,10 @@ public class ExecuteDownload {
 			System.out.println("Get All Historical Quotes For Every Symbol");
 			Thread.sleep(3000);
 			System.out.println("NOTE: replace demo with your private key.");
-			System.out.println("The demo key will always return the aapl symbol regardless of the request symbol.");
+			System.out.println("The demo key will always return the AAPL symbol regardless of the request symbol.");
 			System.out.println("A subscribed key will return the actual symbol data.");
 
-			Thread.sleep(3000);
+			Thread.sleep(5000);
 
 			getHistoricalQuotes(symbolList);
 
@@ -73,7 +73,7 @@ public class ExecuteDownload {
 
 	private static void getQuotes(ArrayList<Symbol> symbolList) throws Exception {
 		/* creating a pool of 10 connections with a delay of 25ms between execution */
-		/* rate limiting for single quotes is 40 quotes/second */
+		/* rate limiting for single quotes is 40 quotes/second. */
 		ThreadPool threadPool = new ThreadPool(10, 25, TimeUnit.MILLISECONDS);
 		for (Symbol symbol : symbolList) {
 			threadPool.execute(new GetSymbol(symbol));

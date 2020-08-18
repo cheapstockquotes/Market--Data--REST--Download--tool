@@ -49,6 +49,7 @@ public class GetSymbol implements Runnable {
 			JsonObject jsonObject = (JsonObject) jsonArray.get(0);
 
 			String symbol = jsonObject.get("symbol").getAsString();
+
 			long date = jsonObject.get("datetime").getAsLong();
 			double high = jsonObject.get("high").getAsDouble();
 			double low = jsonObject.get("low").getAsDouble();
@@ -57,8 +58,12 @@ public class GetSymbol implements Runnable {
 			double prevClose = jsonObject.get("previousclose").getAsDouble();
 			long volume = jsonObject.get("volume").getAsLong();
 
-			/* 4) Store the HLOCV in a Quote object for return */
-			Quote quote = new Quote(new Symbol(symbol), date, high, low, open, close, prevClose, volume);
+			double exthigh = jsonObject.get("exthigh").getAsDouble();
+			double extlow = jsonObject.get("extlow").getAsDouble();
+			long extvolume = jsonObject.get("extvolume").getAsLong();
+
+			/* 4) Store the HLOCV and Extended hours in a Quote object for return */
+			Quote quote = new Quote(new Symbol(symbol), date, high, low, open, close, prevClose, volume, exthigh, extlow, extvolume);
 
 			/* 5) Could store symbol quote data here in a database or file */
 			System.out.println(quote);

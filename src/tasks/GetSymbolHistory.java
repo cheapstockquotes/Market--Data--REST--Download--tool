@@ -60,9 +60,13 @@ public class GetSymbolHistory implements Runnable {
 				double low = jsonObject.get("low").getAsDouble();
 				double open = jsonObject.get("open").getAsDouble();
 				double close = jsonObject.get("close").getAsDouble();
-				// double prevClose = jsonObject.get("previousclose").getAsDouble();
 				long volume = jsonObject.get("volume").getAsLong();
-				symbolHistoricalQuotes.add(new Quote(new Symbol(symbol), date, high, low, open, close, 0, volume));
+
+				double exthigh = jsonObject.get("exthigh").getAsDouble();
+				double extlow = jsonObject.get("extlow").getAsDouble();
+				long extvolume = jsonObject.get("extvolume").getAsLong();
+
+				symbolHistoricalQuotes.add(new Quote(new Symbol(symbol), date, high, low, open, close, volume, exthigh, extlow, extvolume));
 			}
 
 			/* 5) could store or update history database here or write to a file */

@@ -4,20 +4,16 @@ package objects;
 public class Symbol {
 	private String symbol;
 	private String type;
-	private String country;
-	private String sector;
 	private String name;
 
 	public Symbol(String symbol) {
 		this.symbol = symbol;
 	}
 
-	public Symbol(String symbol, String name, String type, String sector, String country) {
+	public Symbol(String symbol, String type, String name) {
 		this.symbol = symbol;
 		this.name = name;
 		this.type = type;
-		this.sector = sector;
-		this.country = country;
 	}
 
 	public String getSymbol() {
@@ -26,19 +22,11 @@ public class Symbol {
 
 	@Override
 	public String toString() {
-		return symbol + " " + name + " " + type + " " + sector + " " + country;
+		return symbol + " " + type + " " + name;
 	}
 
 	public String getType() {
 		return type;
-	}
-
-	public String getCountry() {
-		return country;
-	}
-
-	public String getSector() {
-		return sector;
 	}
 
 	public String getName() {

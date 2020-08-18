@@ -37,8 +37,7 @@ public class GetSymbolList {
 		/* 4) Store symbols in an ArrayList for return */
 		for (JsonElement jsonElement : jsonArray) {
 			JsonObject jsonObject = (JsonObject) jsonElement;
-			symbols.add(new Symbol(jsonObject.get("symbol").getAsString(), jsonObject.get("name").getAsString(), jsonObject.get("type").getAsString(),
-					jsonObject.get("sector").getAsString(), jsonObject.get("country").getAsString()));
+			symbols.add(new Symbol(jsonObject.get("symbol").getAsString(), jsonObject.get("type").getAsString(), jsonObject.get("name").getAsString()));
 		}
 		return symbols;
 	}
