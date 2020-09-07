@@ -16,13 +16,21 @@ public class Quote {
 	private double extlow;
 	private long extvolume;
 
+	private double prehigh;
+	private double prelow;
+	private long prevolume;
+
+	private double posthigh;
+	private double postlow;
+	private long postvolume;
+
 	/**
 	 * This constructor is used for a single quote. A single quote has a previous
 	 * price included as, unlike historical quotes, the previous price cannot be
 	 * interpolated from a previous record.
 	 */
 	public Quote(Symbol symbol, long date, double high, double low, double open, double close, double prevClose, long volume, double exthigh,
-			double extlow, long extvolume) {
+			double extlow, long extvolume, double prehigh, double prelow, long prevolume, double posthigh, double postlow, long postvolume) {
 		this.symbol = symbol;
 		this.dateTime = date;
 		this.high = high;
@@ -34,6 +42,12 @@ public class Quote {
 		this.exthigh = exthigh;
 		this.extlow = extlow;
 		this.extvolume = extvolume;
+		this.prehigh = prehigh;
+		this.prelow = prelow;
+		this.prevolume = prevolume;
+		this.posthigh = posthigh;
+		this.postlow = postlow;
+		this.postvolume = postvolume;
 	}
 
 	/**
@@ -41,8 +55,8 @@ public class Quote {
 	 * previous closing prices in historical quotes. Previous price can be
 	 * interpolated by the previous record.
 	 */
-	public Quote(Symbol symbol, long date, double high, double low, double open, double close, long volume, double exthigh, double extlow,
-			long extvolume) {
+	public Quote(Symbol symbol, long date, double high, double low, double open, double close, long volume, double exthigh, double extlow, long extvolume,
+			double prehigh, double prelow, long prevolume, double posthigh, double postlow, long postvolume) {
 		this.symbol = symbol;
 		this.dateTime = date;
 		this.high = high;
@@ -53,56 +67,24 @@ public class Quote {
 		this.exthigh = exthigh;
 		this.extlow = extlow;
 		this.extvolume = extvolume;
-	}
-
-	public String getSymbol() {
-		return symbol.getSymbol();
-	}
-
-	public long getDate() {
-		return dateTime;
-	}
-
-	public double getOpen() {
-		return open;
-	}
-
-	public double getLow() {
-		return low;
-	}
-
-	public double getHigh() {
-		return high;
-	}
-
-	public double getClose() {
-		return close;
-	}
-
-	public long getVolume() {
-		return volume;
-	}
-
-	public double getExthigh() {
-		return exthigh;
-	}
-
-	public double getExtlow() {
-		return extlow;
-	}
-
-	public long getExtvolume() {
-		return extvolume;
+		this.prehigh = prehigh;
+		this.prelow = prelow;
+		this.prevolume = prevolume;
+		this.posthigh = posthigh;
+		this.postlow = postlow;
+		this.postvolume = postvolume;
 	}
 
 	@Override
 	public String toString() {
 		if (prevClose == 0)
 			return symbol.getSymbol() + " " + new Date(dateTime) + " " + high + " " + low + " " + open + " " + close + " " + " " + " " + volume + " "
-					+ exthigh + " " + extlow + " " + extvolume + " " + System.lineSeparator();
+					+ exthigh + " " + extlow + " " + extvolume + " " + prehigh + " " + prelow + " " + prevolume + " " + posthigh + " " + postlow + " "
+					+ postvolume + " " + System.lineSeparator();
 		else
 			return symbol.getSymbol() + " " + new Date(dateTime) + " " + high + " " + low + " " + open + " " + close + " " + " " + prevClose + " " + volume
-					+ " " + exthigh + " " + extlow + " " + extvolume + " " + System.lineSeparator();
+					+ " " + exthigh + " " + extlow + " " + extvolume + " " + prehigh + " " + prelow + " " + prevolume + " " + posthigh + " " + postlow
+					+ " " + postvolume + " " + System.lineSeparator();
 	}
 
 }

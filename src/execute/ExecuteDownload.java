@@ -52,8 +52,8 @@ public class ExecuteDownload {
 			System.out.println("Get All Historical Quotes For Every Symbol");
 			Thread.sleep(3000);
 			System.out.println("NOTE: replace demo with your private key.");
-			System.out.println("The demo key will always return the AAPL symbol regardless of the request symbol.");
-			System.out.println("A subscribed key will return the actual symbol data.");
+			System.out.println("The demo key will always return the AAPL symbol regardless of the requested symbol.");
+			System.out.println("A subscribed key will return the actual requested symbol data.");
 
 			Thread.sleep(5000);
 
