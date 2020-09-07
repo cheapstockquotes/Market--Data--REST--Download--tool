@@ -1,6 +1,6 @@
 # Market  Data  REST  Download  tool
 CheapStockQuotes provides a reliable and cost effective market data feed for 
-web sites and application developers through REST API calls. Response data is realtime (non-delayed) dating back to 1980. Cheapstockquotes has all U.S. Stocks, Futures, Indexes, ETFs, Funds and International Currencies and some Crypto Currencies. We've recently added Extended, Pre-market and Post-market price data to the service.
+web sites and application developers via a REST API. Response data is realtime (non-delayed) dating back to 1980. Cheapstockquotes has all U.S. Stocks, Futures, Indexes, ETFs, Funds and International Currencies and some Crypto Currencies. We've recently added Extended, Pre-market and Post-market price data to the service.
 
 This repository code is an example application to make REST API calls to https://www.cheapstockquotes.com
  
