@@ -6,7 +6,7 @@ This repository code is an example application to make REST API calls to https:/
  
 Java version 1.8 or greater must be installed to run the pre-built CheapRequestTool.jar, or you can compile your own with the source. 
 
-Java -version will tell you which JVM version you have installed to run the CheapRequestTool.jar.
+A Windows or Linux command line, entering "Java -version", will tell you which JVM version is installed to run the CheapRequestTool.jar.
 
 To run the pre-build CheapRequestTool.jar download the bin directory containing the necessary files. 
 
